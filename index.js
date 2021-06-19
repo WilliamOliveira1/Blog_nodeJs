@@ -2,9 +2,14 @@
 const express = require('express');
 const app = express();
 
+//Rota da controller categories
+const categoriesController = require("./controller/categories/CategoriesController");
+//Rota da controller articles
+const articlesController = require("./controller/articles/ArticlesController");
+
+
 // importando a connection do banco de dados
 const connection = require("./database/database");
-
 // Conectar com o banco de dados
 connection
   .authenticate()
@@ -23,6 +28,10 @@ app.use(express.static('public'));
 // Configurar o body-parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+//Utilizando as rotas da controller
+app.use("/", categoriesController);
+app.use("/", articlesController);
 
 //Rotas
 app.get("/", (req, res) => {
