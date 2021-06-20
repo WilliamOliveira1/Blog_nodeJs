@@ -13,4 +13,6 @@ const Category = connection.define('categories', {
     }
 });
 
+// Category.sync({force: true});  para atualizar o banco apenas
+
 module.exports = Category;

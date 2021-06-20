@@ -8,6 +8,10 @@ const categoriesController = require("./controller/categories/CategoriesControll
 const articlesController = require("./controller/articles/ArticlesController");
 
 
+// importando as models Category e Article
+const Article = require("./model/articles/Article");
+const Category = require("./model/categories/Category");
+
 // importando a connection do banco de dados
 const connection = require("./database/database");
 // Conectar com o banco de dados
