@@ -48,3 +48,7 @@ app.use(express.static('public'));
 
 *documentos do Sequelize*
 > https://sequelize.org/master/
+
+**Instalação do Slugify**
+
+> npm install --save slugify
