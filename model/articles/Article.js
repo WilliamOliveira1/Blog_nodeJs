@@ -24,6 +24,6 @@ Article.belongsTo(Category);
 // Relacionamento 1 - N (Uma Category tem muitos Article)
 Category.hasMany(Article);
 
-// Article.sync({force: true}); para atualizar o banco apenas
+// Article.sync({force: true}); // para atualizar o banco apenas
 
 module.exports = Article;
