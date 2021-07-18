@@ -2,6 +2,7 @@ const express = require("express");
 const Category = require("../../model/categories/Category");
 const router = express.Router();
 const slugfy = require("slugify");
+const { default: slugify } = require("slugify");
 
 
 router.get("/admin/categories/new", (req, res) => {
@@ -67,6 +68,23 @@ router.get("/admin/categories/edit/:id", (req, res) => {
             console.log("id " + id + "is undefined!");
             res.redirect("/admin/categories");
         }
+    }).catch(error => {
+        console.error("An exception was caught: " + error)
+    })
+});
+
+router.post("/categories/update", (req, res) => {
+    let id = req.body.id;
+    let title = req.body.title;
+    let slug = req.body.slug;
+
+    Category.update({title: title, slug: slugify(title)},
+        {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.redirect("/admin/categories");
     }).catch(error => {
         console.error("An exception was caught: " + error)
     })
