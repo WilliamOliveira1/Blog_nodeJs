@@ -19,7 +19,7 @@ router.post("/categories/save", (req, res) => {
         })
         .then(() => {
             console.log("Category saved " + slugfy(title));
-            res.redirect("/");
+            res.redirect("/admin/categories");
         });  
     }else {
         console.log("User tried to save empty data");
@@ -40,7 +40,7 @@ router.post("/categories/delete", (req, res) => {
             Category.destroy({
                 where: {
                     id: id
-                }                
+                }
             }).then(() => {
                 res.redirect("/admin/categories");
             });
@@ -57,7 +57,9 @@ router.post("/categories/delete", (req, res) => {
 router.get("/admin/categories/edit/:id", (req, res) => {
     let id = req.params.id;
 
-    if()
+    if(isNaN(id)) {
+        res.redirect("/admin/categories");
+    }
     Category.findByPk(id).then(category => {
         if(category !== undefined) {
             res.render("admin/categories/edit", {category: category})
