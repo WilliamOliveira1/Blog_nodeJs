@@ -10,6 +10,11 @@
                 <form action="" method="">
                     <input class="form-control" type="text" name="title" placeholder="Defina o artigo"><br>
                     <textarea id="article" name="body" class="form-control" placeholder="Escreva seu texto aqui"></textarea>
+                    <select name="category" id="article-dropdown" class="form-control mt-4">
+                        <% categories.forEach((category) => { %>
+                            <option value="<%= category.id  %>"><%= category.title  %> </option>
+                        <% }) %>
+                    </select>
                     <button class="btn btn-success mt-4">Salvar</button>
                 </form>
             </div>
