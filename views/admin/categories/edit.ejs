@@ -1,0 +1,17 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/navbar')  %>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-title">
+                <h2 class="text-center mt-2">Edição de categoria</h2>
+                <hr>
+            </div>
+            <div class="card-body">
+                <form action="/categories/edit" method="POST">
+                    <input class="form-control" type="text" name="title" placeholder="Edite a categoria"><br>
+                    <button class="btn btn-success">Editar</button>
+                </form>
+            </div>
+        </div>        
+    </div>
+<%- include('../../partials/footer'); %>

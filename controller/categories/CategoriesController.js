@@ -52,8 +52,22 @@ router.post("/categories/delete", (req, res) => {
         console.log("id " + id + "is undefined!");
         res.redirect("/admin/categories");
     }
+});
 
+router.get("/admin/categories/edit/:id", (req, res) => {
+    let id = req.params.id;
 
+    if()
+    Category.findByPk(id).then(category => {
+        if(category !== undefined) {
+            res.render("admin/categories/edit", {category: category})
+        }else {
+            console.log("id " + id + "is undefined!");
+            res.redirect("/admin/categories");
+        }
+    }).catch(error => {
+        console.error("An exception was caught: " + error)
+    })
 });
 
 module.exports = router;
