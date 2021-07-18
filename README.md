@@ -52,3 +52,40 @@ app.use(express.static('public'));
 **Instalação do Slugify**
 
 > npm install --save slugify
+
+**Usando o TinyMCE**
+
+Link para download
+
+> https://www.tiny.cloud/get-tiny/self-hosted/
+
+colocar a pasta do TinyMCE dentro da pasta public
+
+Exemplo:
+
+```
+{html}
+<space>
+{
+<textarea id="article" name="body" class="form-control" placeholder="Escreva seu texto aqui"></textarea>
+}
+```
+
+```
+{javascript}
+<space>
+{
+tinymce.init({
+    selector: "#article"
+});
+}
+```
+
+Se deseja novos idiomas para o tinyMCE:
+
+> https://www.tiny.cloud/get-tiny/language-packages/
+
+Doc do tinyMCE:
+
+> https://www.tiny.cloud/docs/
+
