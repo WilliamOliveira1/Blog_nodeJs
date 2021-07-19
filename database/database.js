@@ -9,7 +9,8 @@ const Sequelize = require('sequelize');
 // Senha do banco - 123456
 const connection = new Sequelize('blog_crud', 'root', '123456', {
     host: 'localhost', // Como está sendo usado localmente
-    dialect: 'mysql' // Indicar que vamos usar MySql
+    dialect: 'mysql', // Indicar que vamos usar MySql
+    timezone: '-03:00' // Configurar a time zone para região Brasil
 });
 
 // Exportando a conexão

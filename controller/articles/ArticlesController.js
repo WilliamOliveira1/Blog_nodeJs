@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Category = require("../../model/categories/Category")
+const Category = require("../../model/categories/Category");
+const Article = require("../../model/articles/Article");
+const slugfy = require("slugify");
 
-router.get("/articles", (req, res) => {
+
+router.get("/admin/articles", (req, res) => {
     res.send("Rota de artigos");
 });
 
@@ -10,6 +13,26 @@ router.get("/admin/articles/new", (req, res) => {
     Category.findAll().then( categories => {
         res.render("admin/articles/new", {categories: categories});
     })    
+});
+
+router.post("/article/save", (req,res) => {
+    let title    = req.body.title;
+    let body     = req.body.body;
+    let category = req.body.category;
+
+    if(!title || !body) {
+        console.error("User tried to save empty Title!");
+        res.redirect("/admin/articles");
+    }else{
+        Article.create({
+            title: title,
+            slug: slugfy(title),
+            body: body,
+            categoryId: category
+        }).then(() => {
+            res.redirect("/admin/articles");
+        })
+    }
 });
 
 module.exports = router;
