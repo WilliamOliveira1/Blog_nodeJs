@@ -5,3 +5,11 @@ $(".deleteCategory").on("click",function(e) {
         this.submit();
     }
 });
+
+$(".deleteArticle").on("click",function(e) {
+    e.preventDefault();
+    let decision = confirm("Você deseja deletar este artigo?");
+    if(decision){
+        this.submit();
+    }
+});

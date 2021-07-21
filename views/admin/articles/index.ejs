@@ -20,7 +20,12 @@
                     <td> <%= article.title  %> </td>
                     <td> <%= article.slug  %> </td>
                     <td> <%= article.category.title  %> </td>
-                    <td> ações </td>
+                    <td> 
+                        <form method="POST" action="/articles/delete" class="inline deleteArticle">
+                            <input type="hidden" name="id" value="<%= article.id %>">
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>      
+                    </td>
                 </tr>
                 <% }) %>
             </tbody>

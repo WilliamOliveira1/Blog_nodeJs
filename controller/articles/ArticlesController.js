@@ -39,4 +39,43 @@ router.post("/article/save", (req,res) => {
     }
 });
 
+router.post("/articles/delete", (req, res) => {
+    var id = req.body.id;
+    if(id !== undefined) {
+        if(!isNaN(id)) {
+            Article.destroy({
+                where: {
+                    id: id
+                }
+            }).then(() => {
+                res.redirect("/admin/articles");
+            });
+        }else {
+            console.log("id " + id + "is not a number!");
+            res.redirect("/admin/articles");
+        }
+    }else {
+        console.log("id " + id + "is undefined!");
+        res.redirect("/admin/articles");
+    }
+});
+
+router.get("/admin/articles/edit/:id", (req, res) => {
+    let id = req.params.id;
+
+    if(isNaN(id)) {
+        res.redirect("/admin/articles");
+    }
+    Article.findByPk(id).then(article => {
+        if(article !== undefined) {
+            res.render("/admin/articles/edit", {article: article})
+        }else {
+            console.log("id " + id + "is undefined!");
+            res.redirect("/admin/articles");
+        }
+    }).catch(error => {
+        console.error("An exception was caught: " + error)
+    })
+});
+
 module.exports = router;
