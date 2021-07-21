@@ -1,0 +1,29 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/navbar')  %>
+    <div class="container mt-4">
+        <h2 class="inline">Categorias</h2>
+        <a class="btn btn-success m-3" href="/admin/articles/new">Criar nova artigo</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Título</th>
+                    <th>Slug</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>                
+                <% articles.forEach(article => { %> 
+                <tr>
+                    <td> <%= article.id  %> </td>
+                    <td> <%= article.title  %> </td>
+                    <td> <%= article.slug  %> </td>
+                    <td> <%= article.category.title  %> </td>
+                    <td> ações </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>        
+    </div>
+<%- include('../../partials/footer'); %>
