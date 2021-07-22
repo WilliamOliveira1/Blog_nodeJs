@@ -16,7 +16,7 @@ Blog(CRUD) feito com Node.Js
 
 ***Setar o Ejs para renderizar HTML e usar arquivos estaticos***
 
-```
+```javascript
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 ```
@@ -73,7 +73,7 @@ tinymce.init({
 });
 ```
 
-Se deseja novos idiomas para o tinyMCE:
+Se desejar novos idiomas para o tinyMCE:
 
 > https://www.tiny.cloud/get-tiny/language-packages/
 
