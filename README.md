@@ -65,7 +65,6 @@ Exemplo:
 
 ```
 {html}
-<space>
 {
 <textarea id="article" name="body" class="form-control" placeholder="Escreva seu texto aqui"></textarea>
 }
@@ -73,7 +72,6 @@ Exemplo:
 
 ```
 {javascript}
-<space>
 {
 tinymce.init({
     selector: "#article"
