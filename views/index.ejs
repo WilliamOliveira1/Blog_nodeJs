@@ -1,6 +1,24 @@
 <%- include('./partials/head') %>
 <%- include('./partials/navbar')  %>
-    <main>
-        <h1>Bem vindo!</h1>
-    </main>
+    <div class="container">
+        <hr>
+        <div class="jumbotron">
+            <h1 class="display-4">Bem-vindo</h1>
+            <p class="lead">Este é um simples blog</p>
+            <hr class="my-4">
+            <p>Descrição detalhada aqui!</p>
+            <a href="" class="btn btn-primary btn-large">Leia mais</a>
+        </div>
+        <hr>
+        <% articles.forEach(article => { %>
+            <div class="card">
+                <div class="card-header">
+                    <h2> <%= article.title  %> </h2>
+                </div>
+                <div class="card-body">
+                    <a href="" class="btn btn-success mb-4">Ler artigo</a>
+                </div>
+            </div>            
+        <% }) %> 
+    </div>
 <%- include('partials/footer'); %>

@@ -39,7 +39,9 @@ app.use("/", articlesController);
 
 //Rotas
 app.get("/", (req, res) => {
-      res.render("index");
+  Article.findAll().then(articles => {
+    res.render("index", {articles: articles});
+  });     
 });
 
 app.listen(8080, (error) => {
