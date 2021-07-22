@@ -63,20 +63,14 @@ colocar a pasta do TinyMCE dentro da pasta public
 
 Exemplo:
 
-```
-{html}
-{
+```html
 <textarea id="article" name="body" class="form-control" placeholder="Escreva seu texto aqui"></textarea>
-}
 ```
 
-```
-{javascript}
-{
+```javascript
 tinymce.init({
     selector: "#article"
 });
-}
 ```
 
 Se deseja novos idiomas para o tinyMCE:
