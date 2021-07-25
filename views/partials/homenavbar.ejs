@@ -1,0 +1,15 @@
+<!-- include('./partials/homenavbar') -->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+           <h5>Home</h5>
+        </a>
+        <ul class="navbar-nav mr-auto">                
+            <% categories.forEach(category => { %>
+                <li class="nav-item">
+                    <a href="/category/<%= category.slug  %> " class="nav-link"><%= category.title %> </a>
+                </li>
+            <% }) %>  
+        </ul>
+    </div>
+</nav>

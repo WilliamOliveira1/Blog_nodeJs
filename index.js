@@ -38,25 +38,58 @@ app.use("/", categoriesController);
 app.use("/", articlesController);
 
 //Rotas
-app.get("/", (req, res) => {
+app.get("/", (req, res) => { 
   Article.findAll({
     order: [
       ['id', 'DESC']
     ]
   }).then(articles => {
-    res.render("index", {articles: articles});
+    Category.findAll().then(categories => {
+      res.render("index", {
+        articles: articles,
+        categories: categories
+      });
+    });    
   });     
 });
 
-app.get("/:slug", (req,res) => {
+app.get("/:slug", (req,res) => { // carrega a pagina do artigo
   let slug = req.params.slug;
   Article.findOne({
     where: {
       slug: slug
     }
   }).then(article => {
-    if(article !== undefined) {
-      res.render("article", {article:article});
+    if(article !== undefined) {      
+      Category.findAll().then(categories => {
+        res.render("article", {
+          article: article,
+          categories: categories
+        });
+      });    
+    }else{
+      res.redirect("/");
+    }
+  }).catch( error => {
+    console.error("An exception was caught: " + error)
+  })
+});
+
+app.get("/category/:slug", (req,res) => { // Carregar na home apenas a categoria selecionada na navbar
+  let slug = req.params.slug;
+  Category.findOne({
+    where: {
+      slug: slug
+    },
+    include: [{model: Article}]
+  }).then(category => {
+    if(category !== undefined) {      
+      Category.findAll().then(categories => {
+        res.render("index", {
+          articles: category.articles,
+          categories: categories
+        });
+      });    
     }else{
       res.redirect("/");
     }
