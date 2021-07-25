@@ -3,15 +3,33 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-title">
-                <h2 class="text-center mt-2">Edição de artigo</h2>
+                <h2 class="text-center mt-2">Editar de artigo</h2>
                 <hr>
             </div>
             <div class="card-body">
-                <form action="" method="">
-                    <input class="form-control" type="text" name="title" placeholder="Defina o artigo"><br>
-                    <button class="btn btn-success">Atualizar</button>
+                <form action="/article/update" method="POST">
+                    <input type="hidden" value="<%= article.id %>" name="id">
+                    <input class="form-control" type="text" name="title" placeholder="Defina o titulo do artigo" value="<%= article.title %>"><br>
+                    <textarea id="article" name="body" class="form-control" placeholder="Escreva seu texto aqui"></textarea>
+                    <select name="category" id="article-dropdown" class="form-control mt-4">
+                        <% categories.forEach((category) => { %>
+                            <% if(category.id === article.categoryId) { %> 
+                                <option value="<%= category.id  %>" selected> <%= category.title  %> </option>
+                            <% }else { %> 
+                                <option value="<%= category.id  %>"><%= category.title  %> </option>
+                            <% } %>                            
+                        <% }) %>
+                    </select>
+                    <button class="btn btn-success mt-4">Atualizar</button>
                 </form>
             </div>
         </div>        
     </div>
+
+    <div class="hide" id="content">
+        <%- article.body %>
+    </div>
+    
 <%- include('../../partials/footer'); %>
+<script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="/js/article-tiny.js"></script>

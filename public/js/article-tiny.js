@@ -6,5 +6,8 @@ tinymce.init({
     ],
     mobile: {
         menubar: true
+    },
+    init_instance_callback: () => { // carregar para editar o artiigo
+        tinymce.get("article").setContent($("#content").html());
     }
 });
